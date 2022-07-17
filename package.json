@@ -1,0 +1,11 @@
+{
+  "name": "readback",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:thomastoye/readback.git",
+  "author": "Thomas Toye <thomas@toye.io>",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@angular/cli": "^14.0.6"
+  }
+}
