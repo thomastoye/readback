@@ -1,0 +1,9 @@
+<yaga-map [(lat)]="SUIKERROCK_POS.lat" #yagaMap [(lng)]="SUIKERROCK_POS.lng" [(zoom)]="zoom" [maxZoom]="19">
+  <yaga-tile-layer [(url)]="tileLayerUrl" attribution="© OpenStreetMap contributors"></yaga-tile-layer>
+  <yaga-image-overlay [url]="overlayUrl" [bounds]="overlayBounds" [opacity]="0.8"></yaga-image-overlay>
+  <yaga-attribution-control></yaga-attribution-control>
+  <yaga-marker [lat]="location.position.lat" [lng]="location.position.lng" [icon]='blueIcon' *ngFor="let location of locations$ | async">
+    <yaga-popup [closeButton]="false" [textContent]="location.crewName"></yaga-popup>
+  </yaga-marker>
+  <yaga-zoom-control></yaga-zoom-control>
+</yaga-map>

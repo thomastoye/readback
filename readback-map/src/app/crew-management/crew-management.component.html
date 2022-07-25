@@ -1,0 +1,19 @@
+<mat-card class="crew-management-card" *ngFor="let knownDmrId of knownDmrIds$ | async">
+  <mat-card-title>{{ knownDmrId.crewName }}</mat-card-title>
+  <mat-card-subtitle>DMR ID: {{ knownDmrId.dmrId }}</mat-card-subtitle>
+  <mat-card-content>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="rename(knownDmrId.dmrId)">HERNOEMEN</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="crew-management-card" *ngFor="let unknownDmrId of unknownDmrIds$ | async">
+  <mat-card-title>Onbekende ploeg (DMR ID: {{ unknownDmrId.dmrId }})</mat-card-title>
+  <mat-card-subtitle>Last heard: {{ unknownDmrId.lastHeard | dfnsFormatPure : 'HH:mm:ss, eee d MMMM yyyy' }}</mat-card-subtitle>
+  <mat-card-content>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="rename(unknownDmrId.dmrId)">NAAM GEVEN</button>
+  </mat-card-actions>
+</mat-card>

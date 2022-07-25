@@ -1,0 +1,6 @@
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Naam</mat-label>
+  <input matInput placeholder="Naam" #nameInput>
+</mat-form-field>
+
+<button mat-raised-button color="primary" (click)="submitName(nameInput.value)">BEVESTIGEN</button>

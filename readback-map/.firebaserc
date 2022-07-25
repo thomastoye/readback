@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "suiker-prod": {
+      "hosting": {
+        "readback-map": [
+          "suiker-prod"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "suiker-prod"
+  }
+}
