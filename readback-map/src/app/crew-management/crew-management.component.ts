@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { CrewLocationService } from '../crew-location.service';
 import { NameDialogComponent } from '../name-dialog/name-dialog.component';
 
@@ -29,7 +29,7 @@ export class CrewManagementComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.knownDmrIds$ = this.crewService.getKnownDmrIds$().pipe(takeUntil(this.onDestroy$))
-    this.unknownDmrIds$ = this.crewService.getUnknownDmrIds$().pipe(takeUntil(this.onDestroy$))
+    this.unknownDmrIds$ = this.crewService.getUnknownDmrIds$().pipe(takeUntil(this.onDestroy$), map(list => ([... list].sort((a, b) => b.lastHeard - a.lastHeard))))
   }
 
   ngOnDestroy(): void {
@@ -42,5 +42,9 @@ export class CrewManagementComponent implements OnInit, OnDestroy {
         this.crewService.setCrewName(dmrId, data.name)
       }
     })
+  }
+
+  deleteDmrId(dmrId: string) {
+    this.crewService.removeCrew(dmrId)
   }
 }

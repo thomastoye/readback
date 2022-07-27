@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collection, setDoc, doc, CollectionReference, Firestore, collectionSnapshots, GeoPoint } from '@angular/fire/firestore';
+import { deleteDoc } from '@firebase/firestore';
 import { Observable, map, combineLatest, switchMap, catchError } from 'rxjs';
 import { UserService } from './user.service';
 
@@ -96,6 +97,10 @@ export class CrewLocationService {
         })
       })
     )
+  }
+
+  removeCrew(dmrId: string): Promise<void> {
+    return deleteDoc(doc(this.dmrIdColl, dmrId))
   }
 
   setCrewName(dmrId: string, crewName: string): Promise<void> {
