@@ -56,7 +56,7 @@ export class MyMapComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.locations$ = this.crewLocationService.getPositions$().pipe(takeUntil(this.onDestroy$))
+    this.locations$ = this.crewLocationService.getPositions$().pipe(map(list => list.filter(position => position.howLongAgoSeconds < 3600)), takeUntil(this.onDestroy$))
   }
 
   ngOnDestroy(): void {
