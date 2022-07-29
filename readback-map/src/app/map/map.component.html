@@ -2,8 +2,12 @@
   <yaga-tile-layer [(url)]="tileLayerUrl" attribution="© OpenStreetMap contributors"></yaga-tile-layer>
   <yaga-image-overlay [url]="overlayUrl" [bounds]="overlayBounds" [opacity]="0.8"></yaga-image-overlay>
   <yaga-attribution-control></yaga-attribution-control>
-  <yaga-marker [lat]="location.position.lat" [lng]="location.position.lng" [icon]='blueIcon' *ngFor="let location of locations$ | async">
-    <yaga-popup [closeButton]="false" [textContent]="location.crewName"></yaga-popup>
+  <yaga-marker
+    [lat]="location.position.lat"
+    [lng]="location.position.lng"
+    [icon]='location.howLongAgoSeconds < 180 ? blueIcon : greyIcon'
+    *ngFor="let location of locations$ | async; trackBy: trackByDmrId">
+    <yaga-popup [closeButton]="false" textContent="{{ location.crewName }} ({{location.howLongAgoFormat}})"></yaga-popup>
   </yaga-marker>
   <yaga-zoom-control></yaga-zoom-control>
 </yaga-map>

@@ -15,6 +15,7 @@ export class CrewManagementComponent implements OnInit, OnDestroy {
   knownDmrIds$: Observable<readonly {
     dmrId: string;
     crewName: string;
+    lastHeard: number | null;
   }[]> | null = null
 
   unknownDmrIds$: Observable<readonly {

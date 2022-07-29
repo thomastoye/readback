@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { collection, setDoc, doc, CollectionReference, Firestore, collectionSnapshots, GeoPoint } from '@angular/fire/firestore';
 import { deleteDoc } from '@firebase/firestore';
-import { Observable, map, combineLatest, switchMap, catchError } from 'rxjs';
+import { differenceInSeconds, formatDistance } from 'date-fns';
+import nlBE from 'date-fns/locale/nl-BE';
+import { Observable, map, combineLatest, switchMap, catchError, interval, startWith } from 'rxjs';
 import { UserService } from './user.service';
 
 export type TrackDoc = {
@@ -39,13 +41,23 @@ export class CrewLocationService {
   getKnownDmrIds$(): Observable<readonly {
     dmrId: string,
     crewName: string
+    lastHeard: number | null
   }[]> {
-    return this.user.user$.pipe(switchMap(_ => collectionSnapshots(this.dmrIdColl)), map(snaps => snaps.map(snap => {
-      return {
-        dmrId: snap.id,
-        crewName: snap.data().crewName
-      }
-    }), catchError((err) => {
+    return this.user.user$.pipe(switchMap(_ => combineLatest([ collectionSnapshots(this.dmrIdColl), collectionSnapshots(this.trackColl) ])), map(([dmrIdSnaps, trackSnaps]) => {
+      const list: {
+        dmrId: string
+        crewName: string
+        lastHeard: number | null
+      }[] = dmrIdSnaps.map(snap => {
+        return {
+          dmrId: snap.id,
+          crewName: snap.data().crewName,
+          lastHeard: trackSnaps.find(trackSnap => trackSnap.id === snap.id)?.data().received || null
+        };
+      });
+
+      return list.sort((a, b) => a.crewName.localeCompare(b.crewName))
+    }, catchError((err) => {
       console.log(err)
       return []
     })))
@@ -75,20 +87,27 @@ export class CrewLocationService {
       lat: number
       lng: number
     }
+    received: Date
+    howLongAgoSeconds: number
+    howLongAgoFormat: string
   }[]> {
-    return combineLatest([collectionSnapshots(this.dmrIdColl), collectionSnapshots(this.trackColl)]
+    return combineLatest([collectionSnapshots(this.dmrIdColl), collectionSnapshots(this.trackColl), interval(5000).pipe(startWith(new Date()), map(_ => new Date()))]
     ).pipe(
-      map(([dmrIdDocs, trackDocs]) => {
+      map(([dmrIdDocs, trackDocs, now]) => {
         return trackDocs.map(trackDoc => {
           const dmrId = trackDoc.id
           const dmrIdData = dmrIdDocs.find(dmrIdDoc => dmrIdDoc.id === dmrId)
           const crewName = dmrIdData?.data().crewName || `<DMR:${dmrId}>`
           const trackDocData = trackDoc.data()
 
+          const received = new Date(trackDocData.received)
+
           return {
             crewName,
             dmrId,
-            received: trackDocData.received,
+            received,
+            howLongAgoSeconds: differenceInSeconds(now, received),
+            howLongAgoFormat: formatDistance(now, received, { locale: nlBE }),
             position: {
               lat: trackDocData.position.latitude,
               lng: trackDocData.position.longitude

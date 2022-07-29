@@ -1,6 +1,6 @@
 <mat-card class="crew-management-card" *ngFor="let knownDmrId of knownDmrIds$ | async">
   <mat-card-title>{{ knownDmrId.crewName }}</mat-card-title>
-  <mat-card-subtitle>DMR ID: {{ knownDmrId.dmrId }}</mat-card-subtitle>
+  <mat-card-subtitle>DMR ID: {{ knownDmrId.dmrId }}, last heard: {{ knownDmrId.lastHeard | dfnsFormatPure : 'HH:mm:ss, eee d MMMM yyyy' }}</mat-card-subtitle>
   <mat-card-content>
   </mat-card-content>
   <mat-card-actions>

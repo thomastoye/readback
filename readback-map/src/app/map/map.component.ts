@@ -5,6 +5,7 @@ import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { CrewLocationService } from '../crew-location.service';
 
 const PDF_TILE_LAYER_URL = '/assets/map.png'
+const DEFAULT_ZOOM_LEVEL = 17
 
 @Component({
   selector: 'app-map',
@@ -21,6 +22,8 @@ export class MyMapComponent implements OnInit, OnDestroy, AfterViewInit {
         lat: number;
         lng: number;
     };
+    howLongAgoSeconds: number
+    howLongAgoFormat: string
   }[]> | null = null
 
   public SUIKERROCK_POS = { lat: 50.79880, lng: 4.94704 }
@@ -33,6 +36,14 @@ export class MyMapComponent implements OnInit, OnDestroy, AfterViewInit {
   public blueIcon = new Icon({
     iconUrl: '/assets/marker-icon.png',
     iconRetinaUrl: '/assets/marker-icon-2x.png',
+    shadowUrl: '/assets/marker-shadow.png',
+    // iconAnchor: [22, 94],
+    popupAnchor: [0, -35]
+  })
+
+  public greyIcon = new Icon({
+    iconUrl: '/assets/marker-icon-grey.png',
+    iconRetinaUrl: '/assets/marker-icon-2x-grey.png',
     shadowUrl: '/assets/marker-shadow.png',
     // iconAnchor: [22, 94],
     popupAnchor: [0, -35]
@@ -53,7 +64,11 @@ export class MyMapComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.yagaMap.setView(this.SUIKERROCK_POS, 17)
+    this.yagaMap.setView(this.SUIKERROCK_POS, DEFAULT_ZOOM_LEVEL)
+  }
+
+  trackByDmrId(idx: number, { dmrId }: { readonly dmrId: string }): string {
+    return dmrId
   }
 
 }
