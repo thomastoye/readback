@@ -1,8 +1,0 @@
-<mat-toolbar>
-  <button mat-button [routerLink]="['/kaart']" routerLinkActive="mat-accent">KAART</button>
-  <button mat-button [routerLink]="['/ploegen']" routerLinkActive="mat-accent">PLOEGEN</button>
-  <span class="nav-spacer"></span>
-  <button *ngIf="(user$ | async) == null" mat-raised-button color="primary" (click)="signIn()">AANMELDEN</button>
-  <em class="logged-in-user-email" *ngIf="(user$ | async) as user">{{ user.email }}</em>
-  <button *ngIf="(user$ | async) != null" mat-raised-button color="primary" (click)="signOut()">AFMELDEN</button>
-</mat-toolbar>
