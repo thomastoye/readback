@@ -1498,6 +1498,11 @@
   resolved "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
+"@dittolive/ditto@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.npmjs.org/@dittolive/ditto/-/ditto-2.0.7.tgz#8257e813b25990c815270224b3997e27d911b04e"
+  integrity sha512-OEG6Z6vr7YBefPJXLVInHDRwjcFh5CTugd8DsCuIjHqssMXM1eEsU4o/YZAxM5mnzxxY1T58IGBwfG73VBH11Q==
+
 "@esbuild/android-arm@0.15.10":
   version "0.15.10"
   resolved "https://registry.npmjs.org/@esbuild/android-arm/-/android-arm-0.15.10.tgz#a5f9432eb221afc243c321058ef25fe899886892"
