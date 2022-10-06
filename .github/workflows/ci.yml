@@ -6,13 +6,15 @@ on:
   pull_request:
 
 jobs:
-  trunk:
+  main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: 'trunk'
       - run: yarn --frozen-lockfile
 
       - run: yarn nx workspace-lint
