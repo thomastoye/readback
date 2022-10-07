@@ -1,21 +1,21 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Ditto } from "@dittolive/ditto"
+import { Ditto } from '@dittolive/ditto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DittoService implements OnDestroy {
-  #ditto: Ditto
+  #ditto: Ditto;
 
   constructor() {
-    console.log('DittoService - constructor')
+    console.log('DittoService - constructor');
 
-    this.#ditto = new Ditto()
-    this.#ditto.startSync()
+    this.#ditto = new Ditto();
+    this.#ditto.startSync();
   }
 
   ngOnDestroy(): void {
-    console.log('DittoService - ngOnDestroy')
-    this.#ditto.stopSync()
+    console.log('DittoService - ngOnDestroy');
+    this.#ditto.stopSync();
   }
 }

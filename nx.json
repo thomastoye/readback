@@ -2,7 +2,7 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "readback",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "trunk"
   },
   "tasksRunnerOptions": {
     "default": {

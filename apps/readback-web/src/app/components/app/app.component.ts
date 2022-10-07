@@ -9,7 +9,5 @@ import { DittoService } from '../../services/ditto.service';
 export class AppComponent {
   title = 'readback-web';
 
-  constructor(private ditto: DittoService) {
-
-  }
+  constructor(private ditto: DittoService) {}
 }
