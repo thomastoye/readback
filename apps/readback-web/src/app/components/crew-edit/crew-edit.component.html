@@ -1,0 +1,20 @@
+<div class="grid grid-cols-1 gap-6">
+  <form #crewEditForm="ngForm" (ngSubmit)="submit(crewEditForm)">
+    <label class="block">
+      <span class="text-gray-700">Naam {{ model.name }}</span>
+      <input type="text" class="form-input mt-1 block w-full" required placeholder="Naam" [(ngModel)]="model.name" name="name">
+    </label>
+
+    <label class="block">
+      <span class="text-gray-700">Beschrijving</span>
+      <input type="text" class="form-input mt-1 block w-full" placeholder="Beschrijving" [(ngModel)]="model.description" name="description">
+    </label>
+
+    <button
+      [disabled]="!crewEditForm.valid"
+      class="hover:shadow-form rounded-md py-3 px-8 text-base font-semibold text-white outline-none"
+      [ngClass]="{ 'bg-blue-600': crewEditForm.valid, 'bg-blue-200': !crewEditForm.valid }">
+      Opslaan
+    </button>
+  </form>
+</div>

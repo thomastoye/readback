@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let crew of crews$ | async">
+    {{ crew.name }} <span *ngIf="crew.description">({{ crew.description }})</span>
+  </li>
+</ul>
+
+<readback-crew-edit (submitCrew)="submitCrew($event)"></readback-crew-edit>
