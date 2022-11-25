@@ -1,4 +1,69 @@
-<h1 class="text-lg font-medium p-4">
-  Welcome {{ title }}
-</h1>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>
+      <!-- <img
+        src="assets/logo.svg"
+        height="40"
+        class="d-inline-block align-top"
+        loading="lazy"
+      />
+      &nbsp; -->
+      Menu
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon matListItemIcon>home</mat-icon>
 
+        <a mat-list-item routerLink="/">
+          Home
+        </a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon matListItemIcon>settings</mat-icon>
+
+        <a mat-list-item routerLink="/about">
+          Settings
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <!-- <img
+        *ngIf="isHandset$ | async"
+        src="assets/logo.svg"
+        height="40"
+        class="d-inline-block align-top"
+        alt="Angular Starters Logo"
+        loading="lazy"
+      />
+      &nbsp; -->
+      <span>
+        Angular Material
+      </span>
+    </mat-toolbar>
+
+    <h1 class="text-lg font-medium p-4">
+      Welcome {{ title }}
+    </h1>
+
+    <!-- <router-outlet></router-outlet> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

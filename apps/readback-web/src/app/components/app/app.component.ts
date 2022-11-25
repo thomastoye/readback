@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { map, Observable, shareReplay } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 
 @Component({
   selector: 'readback-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'readback-web';
+
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(
+      map((result) => result.matches),
+      shareReplay()
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
 }

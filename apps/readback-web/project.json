@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/readback-web",
         "index": "apps/readback-web/src/index.html",
@@ -19,7 +21,10 @@
           "apps/readback-web/src/favicon.ico",
           "apps/readback-web/src/assets"
         ],
-        "styles": ["apps/readback-web/src/styles.scss"],
+        "styles": [
+          "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+          "apps/readback-web/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -84,7 +89,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/readback-web"],
+      "outputs": [
+        "coverage/apps/readback-web"
+      ],
       "options": {
         "jestConfig": "apps/readback-web/jest.config.ts",
         "passWithNoTests": true
