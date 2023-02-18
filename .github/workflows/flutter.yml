@@ -1,0 +1,21 @@
+name: Flutter
+on:
+  push:
+    branches:
+      - trunk
+  pull_request:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.3'
+          channel: 'stable'
+      - run: flutter doctor
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build apk
+      - run: flutter build appbundle
