@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { DittoService } from './ditto.service';
+import { DittoService } from './ditto.service'
 
 describe('DittoService', () => {
-  let service: DittoService;
+  let service: DittoService
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(DittoService);
-  });
+    TestBed.configureTestingModule({})
+    service = TestBed.inject(DittoService)
+  })
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    expect(service).toBeTruthy()
+  })
+})

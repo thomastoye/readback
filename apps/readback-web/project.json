@@ -7,9 +7,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/readback-web",
         "index": "apps/readback-web/src/index.html",
@@ -89,9 +87,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/readback-web"
-      ],
+      "outputs": ["coverage/apps/readback-web"],
       "options": {
         "jestConfig": "apps/readback-web/jest.config.ts",
         "passWithNoTests": true
