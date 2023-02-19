@@ -87,7 +87,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/readback-web"],
+      "outputs": ["{workspaceRoot}/coverage/apps/readback-web"],
       "options": {
         "jestConfig": "apps/readback-web/jest.config.ts",
         "passWithNoTests": true
