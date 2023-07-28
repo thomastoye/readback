@@ -1,3 +1,5 @@
+
+
 # Readback
 
 This project was generated using [Nx](https://nx.dev).
@@ -5,14 +7,6 @@ This project was generated using [Nx](https://nx.dev).
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
 🔎 **Smart, Fast and Extensible Build System**
-
-## Quick Start & Documentation
-
-[Nx Documentation](https://nx.dev/getting-started/intro)
-
-[Mental model is a good starting point for those who like to understand things theoretically first.](https://nx.dev/concepts/mental-model)
-
-[Interactive Tutorial](https://nx.dev/getting-started/angular-tutorial)
 
 ## Adding capabilities to your workspace
 
@@ -22,24 +16,24 @@ These capabilities include generating applications, libraries, etc as well as th
 
 Below are our core plugins:
 
-- [Angular](https://angular.io)
-  - `nx add @nrwl/angular`
 - [React](https://reactjs.org)
-  - `nx add @nrwl/react`
+  - `npm install --save-dev @nrwl/react`
 - Web (no framework frontends)
-  - `nx add @nrwl/web`
+  - `npm install --save-dev @nrwl/web`
+- [Angular](https://angular.io)
+  - `npm install --save-dev @nrwl/angular`
 - [Nest](https://nestjs.com)
-  - `nx add @nrwl/nest`
+  - `npm install --save-dev @nrwl/nest`
 - [Express](https://expressjs.com)
-  - `nx add @nrwl/express`
+  - `npm install --save-dev @nrwl/express`
 - [Node](https://nodejs.org)
-  - `nx add @nrwl/node`
+  - `npm install --save-dev @nrwl/node`
 
 There are also many [community plugins](https://nx.dev/community) you could add.
 
 ## Generate an application
 
-Run `nx g @nrwl/angular:app my-app` to generate an application.
+Run `nx g @nrwl/react:app my-app` to generate an application.
 
 > You can use any of the plugins above to generate applications as well.
 
@@ -47,7 +41,7 @@ When using Nx, you can create multiple applications and libraries in the same wo
 
 ## Generate a library
 
-Run `nx g @nrwl/angular:lib my-lib` to generate a library.
+Run `nx g @nrwl/react:lib my-lib` to generate a library.
 
 > You can also use any of the plugins above to generate libraries as well.
 
@@ -59,7 +53,7 @@ Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The 
 
 ## Code scaffolding
 
-Run `nx g component my-component --project=my-app` to generate a new component.
+Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
 
 ## Build
 
@@ -83,7 +77,9 @@ Run `nx graph` to see a diagram of the dependencies of your projects.
 
 ## Further help
 
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+Visit the [Nx Documentation](https://nx.dev) to learn more.
+
+
 
 ## ☁ Nx Cloud
 

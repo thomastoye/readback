@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "readback-app": "apps/readback-app",
+    "readback-app-e2e": "apps/readback-app-e2e"
+  }
+}
